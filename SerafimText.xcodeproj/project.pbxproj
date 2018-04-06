@@ -7,25 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D362B6120772F700047792E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D362B6020772F700047792E /* AppDelegate.m */; };
-		4D362B6420772F700047792E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D362B6320772F700047792E /* ViewController.m */; };
-		4D362B6720772F700047792E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D362B6520772F700047792E /* Main.storyboard */; };
-		4D362B6920772F700047792E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D362B6820772F700047792E /* Assets.xcassets */; };
-		4D362B6C20772F700047792E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D362B6A20772F700047792E /* LaunchScreen.storyboard */; };
-		4D362B6F20772F700047792E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D362B6E20772F700047792E /* main.m */; };
+		4D362B7E20772F9D0047792E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D362B7620772F9C0047792E /* ViewController.m */; };
+		4D362B7F20772F9D0047792E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D362B7A20772F9C0047792E /* Assets.xcassets */; };
+		4D362B8020772F9D0047792E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D362B7B20772F9C0047792E /* main.m */; };
+		4D362B8120772F9D0047792E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D362B7C20772F9C0047792E /* AppDelegate.m */; };
+		4D362B8220772F9D0047792E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D362B7D20772F9C0047792E /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4D362B5C20772F700047792E /* SerafimText.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SerafimText.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D362B5F20772F700047792E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		4D362B6020772F700047792E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4D362B6220772F700047792E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4D362B6320772F700047792E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		4D362B6620772F700047792E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4D362B6820772F700047792E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4D362B6B20772F700047792E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D362B6D20772F700047792E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D362B6E20772F700047792E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4D362B7620772F9C0047792E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4D362B7720772F9C0047792E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4D362B7920772F9C0047792E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4D362B7A20772F9C0047792E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4D362B7B20772F9C0047792E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4D362B7C20772F9C0047792E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4D362B7D20772F9C0047792E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,17 +56,32 @@
 		4D362B5E20772F700047792E /* SerafimText */ = {
 			isa = PBXGroup;
 			children = (
-				4D362B5F20772F700047792E /* AppDelegate.h */,
-				4D362B6020772F700047792E /* AppDelegate.m */,
-				4D362B6220772F700047792E /* ViewController.h */,
-				4D362B6320772F700047792E /* ViewController.m */,
-				4D362B6520772F700047792E /* Main.storyboard */,
-				4D362B6820772F700047792E /* Assets.xcassets */,
-				4D362B6A20772F700047792E /* LaunchScreen.storyboard */,
+				4D362B7820772F9C0047792E /* Application */,
+				4D362B7D20772F9C0047792E /* LaunchScreen.storyboard */,
+				4D362B7520772F9C0047792E /* ViewControllers */,
 				4D362B6D20772F700047792E /* Info.plist */,
-				4D362B6E20772F700047792E /* main.m */,
 			);
 			path = SerafimText;
+			sourceTree = "<group>";
+		};
+		4D362B7520772F9C0047792E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4D362B7620772F9C0047792E /* ViewController.m */,
+				4D362B7720772F9C0047792E /* ViewController.h */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4D362B7820772F9C0047792E /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				4D362B7920772F9C0047792E /* AppDelegate.h */,
+				4D362B7A20772F9C0047792E /* Assets.xcassets */,
+				4D362B7B20772F9C0047792E /* main.m */,
+				4D362B7C20772F9C0047792E /* AppDelegate.m */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,9 +142,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D362B6C20772F700047792E /* LaunchScreen.storyboard in Resources */,
-				4D362B6920772F700047792E /* Assets.xcassets in Resources */,
-				4D362B6720772F700047792E /* Main.storyboard in Resources */,
+				4D362B7F20772F9D0047792E /* Assets.xcassets in Resources */,
+				4D362B8220772F9D0047792E /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,32 +154,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D362B6420772F700047792E /* ViewController.m in Sources */,
-				4D362B6F20772F700047792E /* main.m in Sources */,
-				4D362B6120772F700047792E /* AppDelegate.m in Sources */,
+				4D362B8020772F9D0047792E /* main.m in Sources */,
+				4D362B7E20772F9D0047792E /* ViewController.m in Sources */,
+				4D362B8120772F9D0047792E /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		4D362B6520772F700047792E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4D362B6620772F700047792E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4D362B6A20772F700047792E /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4D362B6B20772F700047792E /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4D362B7020772F700047792E /* Debug */ = {
@@ -281,6 +274,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 95GSDCWS4D;
 				INFOPLIST_FILE = SerafimText/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = agranat.mark.it.SerafimText;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -295,6 +289,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 95GSDCWS4D;
 				INFOPLIST_FILE = SerafimText/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = agranat.mark.it.SerafimText;
 				PRODUCT_NAME = "$(TARGET_NAME)";

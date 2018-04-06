@@ -1,14 +1,14 @@
 //
 //  ViewController.h
-//  SerafimText
+//  Test
 //
-//  Created by Марк on 06.04.2018.
+//  Created by Марк on 05.04.2018.
 //  Copyright © 2018 Agranat Mark. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITableViewDataSource>
 
 
 @end
