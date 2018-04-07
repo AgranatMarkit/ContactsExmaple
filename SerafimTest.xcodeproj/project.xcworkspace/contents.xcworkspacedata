@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SerafimText.xcodeproj">
+      location = "self:/Users/mark/Desktop/ios/SerafimTest/SerafimTest.xcodeproj">
    </FileRef>
 </Workspace>
