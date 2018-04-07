@@ -25,6 +25,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     ContactsViewController *contactsVC = [ContactsViewController new];
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:contactsVC];
+    [nc.view setBackgroundColor:UIColor.whiteColor];
     self.window.rootViewController = nc;
     [self.window makeKeyAndVisible];
 }

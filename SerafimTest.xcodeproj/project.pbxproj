@@ -12,8 +12,9 @@
 		4D362B90207730740047792E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D362B8A207730740047792E /* Assets.xcassets */; };
 		4D362B91207730740047792E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D362B8B207730740047792E /* main.m */; };
 		4D362B92207730740047792E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D362B8C207730740047792E /* AppDelegate.m */; };
-		4D362B93207730740047792E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D362B8D207730740047792E /* Info.plist */; };
 		4DF525112078B3C100E12CD6 /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF525102078B3C100E12CD6 /* ContactTableViewCell.m */; };
+		4DF525152078DA6100E12CD6 /* ContactsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF525142078DA6100E12CD6 /* ContactsService.m */; };
+		4DF525192078DA7500E12CD6 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF525182078DA7500E12CD6 /* Contact.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,10 @@
 		4D362B8D207730740047792E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DF5250F2078B3C100E12CD6 /* ContactTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactTableViewCell.h; sourceTree = "<group>"; };
 		4DF525102078B3C100E12CD6 /* ContactTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewCell.m; sourceTree = "<group>"; };
+		4DF525132078DA6100E12CD6 /* ContactsService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsService.h; sourceTree = "<group>"; };
+		4DF525142078DA6100E12CD6 /* ContactsService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsService.m; sourceTree = "<group>"; };
+		4DF525172078DA7500E12CD6 /* Contact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		4DF525182078DA7500E12CD6 /* Contact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +65,8 @@
 		4D362B83207730740047792E /* SerafimTest */ = {
 			isa = PBXGroup;
 			children = (
+				4DF525162078DA6500E12CD6 /* Models */,
+				4DF525122078DA4500E12CD6 /* Services */,
 				4DF5250D2078B35B00E12CD6 /* ConstactList */,
 				4D362B84207730740047792E /* LaunchScreen.storyboard */,
 				4D362B88207730740047792E /* Application */,
@@ -104,6 +111,24 @@
 				4DF525102078B3C100E12CD6 /* ContactTableViewCell.m */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		4DF525122078DA4500E12CD6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4DF525132078DA6100E12CD6 /* ContactsService.h */,
+				4DF525142078DA6100E12CD6 /* ContactsService.m */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4DF525162078DA6500E12CD6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4DF525172078DA7500E12CD6 /* Contact.h */,
+				4DF525182078DA7500E12CD6 /* Contact.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,7 +191,6 @@
 			files = (
 				4D362B8E207730740047792E /* LaunchScreen.storyboard in Resources */,
 				4D362B90207730740047792E /* Assets.xcassets in Resources */,
-				4D362B93207730740047792E /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +205,8 @@
 				4D362B91207730740047792E /* main.m in Sources */,
 				4D362B92207730740047792E /* AppDelegate.m in Sources */,
 				4D362B8F207730740047792E /* ContactsViewController.m in Sources */,
+				4DF525192078DA7500E12CD6 /* Contact.m in Sources */,
+				4DF525152078DA6100E12CD6 /* ContactsService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Contact.h"
 
 @interface ContactTableViewCell : UITableViewCell
 
-- (void) transitToLoadingState;
-- (void) transitToNormalStateWithImage:(UIImage*)image andName:(NSString*)name;
+@property Contact *contact;
+- (void)transitToLoadingState;
+- (void)transitToNormalStateWithContact: (Contact *)contact;
 
 @end

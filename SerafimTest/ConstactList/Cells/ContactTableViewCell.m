@@ -31,7 +31,7 @@
     [self setupLayout];
 }
 
--(void) setupUI {
+-(void)setupUI {
     // image
     self.contactImageView = [UIImageView new];
     self.contactImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -84,12 +84,13 @@
     [self.activityIndicator startAnimating];
 }
 
-- (void)transitToNormalStateWithImage:(UIImage *)image andName:(NSString *)name {
+- (void)transitToNormalStateWithContact: (Contact *)contact {
     [self.contactImageView setHidden: false];
     [self.contactNameLabel setHidden: false];
     [self.activityIndicator stopAnimating];
-    [self.contactImageView setImage: image];
-    [self.contactNameLabel setText:name];
+    self.contact = contact;
+    [self.contactImageView setImage: self.contact.image];
+    [self.contactNameLabel setText: self.contact.name];
 }
 
 @end
