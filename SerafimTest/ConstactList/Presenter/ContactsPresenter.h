@@ -17,5 +17,6 @@
 - (void)viewIsReady;
 - (void)viewWillShow:(Contact*)contact;
 - (void)viewDidRefresh;
+- (void)viewDidTapOnSort;
 
 @end

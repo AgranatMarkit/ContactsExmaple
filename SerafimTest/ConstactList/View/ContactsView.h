@@ -11,8 +11,9 @@
 
 @protocol ContactsView
 
-- (void)display:(NSArray<Contact*>*) contacts;
+- (void)showContacts:(NSArray<Contact*>*) contacts;
 - (void)update:(Contact*)contact;
+- (void)updateContacts:(NSArray<Contact *>*)Contacts;
 - (void)showActivity;
 - (void)hideActvity;
 - (void)endRefreshing;

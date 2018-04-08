@@ -33,32 +33,36 @@ CGFloat const rowHeight = 100.0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.contactsService = [ContactsService new];
+    [self setupUI];
+    [self.presenter viewIsReady];
+}
+
+- (void)setupUI {
     [self setTitle:titleString];
     [self.view setBackgroundColor:UIColor.whiteColor];
     [self.tableView registerClass:[ContactTableViewCell class] forCellReuseIdentifier: cellID];
-    [self setupActivityIndicator];
-    [self setupRefresh];
-    [self.presenter viewIsReady];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"desc" style:UIBarButtonItemStyleDone target:self action:@selector(sort)];
     
-}
-
-- (void) setupRefresh {
+    // refresh
     self.refreshControl = [UIRefreshControl new];
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
-}
-
-- (void) setupActivityIndicator {
+    
+    // activity
     self.activityIndicator = [UIActivityIndicatorView new];
     self.activityIndicator.hidesWhenStopped = true;
     self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     self.tableView.backgroundView = self.activityIndicator;
 }
 
+- (void)sort {
+    [self.presenter viewDidTapOnSort];
+}
+
 - (void)refresh {
     [self.presenter viewDidRefresh];
 }
 
-- (void)display:(NSArray<Contact *> *)contacts {
+- (void)showContacts:(NSArray<Contact *> *)contacts {
     self.contacts = [contacts mutableCopy];
     [self.tableView reloadData];
 }
@@ -70,14 +74,10 @@ CGFloat const rowHeight = 100.0;
             [cell toNormalStateUsing:contact];
         }
     }
-    
-    // Contacts updating
-    NSUInteger indexPath = [self.contacts indexOfObjectPassingTest:^BOOL(Contact * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        return [obj.id isEqualToString:contact.id];
-    }];
-    if (indexPath != NSNotFound) {
-        self.contacts[indexPath] = contact;
-    }
+}
+
+- (void)updateContacts:(NSArray<Contact *>*)Contacts {
+    self.contacts = [Contacts mutableCopy];
 }
 
 - (void) showActivity {

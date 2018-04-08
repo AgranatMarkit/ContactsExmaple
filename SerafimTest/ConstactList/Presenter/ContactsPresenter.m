@@ -12,6 +12,8 @@
 
 @property ContactsService *contactsService;
 
+@property NSMutableArray<Contact *> *contacts;
+
 @end
 
 
@@ -32,7 +34,8 @@
     [self.contactsService getContacts:^(NSArray<Contact *> *contacts) {
         ContactsPresenter *strongSelf = weakSelf;
         [strongSelf.view hideActvity];
-        [strongSelf.view display:contacts];
+        [strongSelf.view showContacts:contacts];
+        strongSelf.contacts = [contacts mutableCopy];
     }];
 }
 
@@ -41,8 +44,20 @@
     [self.contactsService getInfoFor:contact with:^(Contact *contact) {
         ContactsPresenter *strongSelf = weakSelf;
         [contact setName:[strongSelf validatedNameFrom:contact.name]];
+        [strongSelf updateContactsWith:contact];
         [strongSelf.view update:contact];
     }];
+}
+
+- (void)updateContactsWith:(Contact*)contact {
+    // Contacts updating
+    NSUInteger indexPath = [self.contacts indexOfObjectPassingTest:^BOOL(Contact * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        return [obj.id isEqualToString:contact.id];
+    }];
+    if (indexPath != NSNotFound) {
+        self.contacts[indexPath] = contact;
+    }
+    [self.view updateContacts:self.contacts];
 }
 
 - (NSString*)validatedNameFrom:(NSString*)name {
@@ -58,8 +73,16 @@
     [self.contactsService getContacts:^(NSArray<Contact *> *contacts) {
         ContactsPresenter *strongSelf = weakSelf;
         [strongSelf.view endRefreshing];
-        [strongSelf.view display:contacts];
+        [strongSelf.view showContacts:contacts];
     }];
+}
+
+- (void)viewDidTapOnSort {
+   NSSortDescriptor *nameSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name"
+                                ascending:NO
+                                                                       selector:@selector(localizedStandardCompare:)];
+    [self.contacts sortUsingDescriptors:@[nameSortDescriptor]];
+    [self.view showContacts:self.contacts];
 }
 
 @end
