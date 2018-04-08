@@ -23,8 +23,10 @@
 
 @implementation ContactsViewController
 
-NSString *const  cellID = @"cellID";
-NSString *const  titleString = @"Cattacts";
+NSString *const cellID = @"cellID";
+NSString *const titleString = @"Cattacts";
+NSString *const catMessage = @"Meow";
+NSString *const patMessage = @"pat";
 CGFloat const rowHeight = 100.0;
 
 
@@ -65,7 +67,7 @@ CGFloat const rowHeight = 100.0;
     // Cell updating
     for (ContactTableViewCell *cell in self.tableView.visibleCells) {
         if (cell.contact.isEmpty && [cell.contact.id isEqualToString:contact.id]) {
-            [cell transitToNormalStateWithContact:contact];
+            [cell toNormalStateUsing:contact];
         }
     }
     
@@ -101,10 +103,10 @@ CGFloat const rowHeight = 100.0;
     Contact *contact = self.contacts[indexPath.row];
     
     if (contact.isEmpty) {
-        [cell transitToLoadingStateWithContact: contact];
+        [cell toLoadingStateUsing: contact];
         [self.presenter viewWillShow:contact];
     } else {
-        [cell transitToNormalStateWithContact:contact];
+        [cell toNormalStateUsing:contact];
     }
     return cell;
 }
@@ -117,6 +119,13 @@ CGFloat const rowHeight = 100.0;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return rowHeight;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:catMessage preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:patMessage style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alert animated:true completion:^{}];
 }
 
 @end

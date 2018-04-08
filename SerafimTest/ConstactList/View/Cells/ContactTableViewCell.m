@@ -88,7 +88,7 @@
 
 // MARK: - Cell API
 
-- (void)transitToLoadingStateWithContact: (Contact *)contact {
+- (void)toLoadingStateUsing: (Contact *)contact {
     self.contact = contact;
     [self.contactImageView setHidden: true];
     [self.shortcutLabel setHidden:true];
@@ -96,7 +96,7 @@
     [self.activityIndicator startAnimating];
 }
 
-- (void)transitToNormalStateWithContact: (Contact *)contact {
+- (void)toNormalStateUsing: (Contact *)contact {
     self.contact = contact;
     [self.contactImageView setHidden: false || contact.image == nil];
     [self.shortcutLabel setHidden: contact.image != nil];
