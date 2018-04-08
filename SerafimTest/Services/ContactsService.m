@@ -37,7 +37,7 @@
 }
 
 - (NSString*)randomName {
-    NSArray *names = @[@"Nickname", @"Caty", @"Кот", @"cat", @"кот"];
+    NSArray *names = @[@"Nickname", @"Caty",  @"caty", @"Кот", @"cat", @"кот"];
     return names[[self getRandomNumberBetweenLowerBound:0 andUpperBound:(int)names.count]];
 }
 

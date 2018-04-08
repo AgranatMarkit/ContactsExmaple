@@ -40,8 +40,17 @@
     __weak ContactsPresenter *weakSelf = self;
     [self.contactsService getInfoFor:contact with:^(Contact *contact) {
         ContactsPresenter *strongSelf = weakSelf;
+        [contact setName:[strongSelf validatedNameFrom:contact.name]];
         [strongSelf.view update:contact];
     }];
+}
+
+- (NSString*)validatedNameFrom:(NSString*)name {
+    NSMutableString *validatedString = [@"noname" mutableCopy];
+    if ([name rangeOfString:@"^[a-z0-9]+$" options:NSRegularExpressionSearch].location != NSNotFound) {
+        [validatedString setString:name];
+    }
+    return validatedString;
 }
 
 - (void)viewDidRefresh {
