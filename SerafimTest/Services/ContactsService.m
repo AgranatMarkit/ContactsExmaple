@@ -25,9 +25,10 @@
 
 - (void)getInfoFor:(Contact*)contact with:(void (^)(Contact *contact))completionHandler {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)([self randomTime])), dispatch_get_main_queue(), ^{
-        [contact setName:@"Nickname"];
-        [contact setImage:[self randomImage]];
-        completionHandler(contact);
+        Contact *newContact = [contact copy];
+        [newContact setName:[self randomName]];
+        [newContact setImage:[self randomImage]];
+        completionHandler(newContact);
     });
 }
 
@@ -35,9 +36,14 @@
     return [self getRandomNumberBetweenLowerBound:10 andUpperBound:30] * (NSEC_PER_SEC / 10);
 }
 
+- (NSString*)randomName {
+    NSArray *names = @[@"Nickname", @"Caty", @"Кот", @"cat", @"кот"];
+    return names[[self getRandomNumberBetweenLowerBound:0 andUpperBound:(int)names.count]];
+}
+
 - (UIImage*)randomImage {
     NSString *imageName = [[NSString alloc] initWithFormat:@"icon%d",
-                           [self getRandomNumberBetweenLowerBound:1 andUpperBound:5]];
+                           [self getRandomNumberBetweenLowerBound:1 andUpperBound:7]];
     return [UIImage imageNamed:imageName];
 }
 

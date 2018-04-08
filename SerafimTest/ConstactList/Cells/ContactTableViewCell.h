@@ -12,7 +12,7 @@
 @interface ContactTableViewCell : UITableViewCell
 
 @property Contact *contact;
-- (void)transitToLoadingState;
+- (void)transitToLoadingStateWithContact: (Contact *)contact;
 - (void)transitToNormalStateWithContact: (Contact *)contact;
 
 @end

@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface Contact : NSObject
+@interface Contact : NSObject<NSCopying>
 
 @property NSString *id;
 @property NSString *name;
 @property UIImage *image;
 @property (readonly) BOOL isEmpty;
+@property (readonly) NSString *firstTwoChars;
 
 @end

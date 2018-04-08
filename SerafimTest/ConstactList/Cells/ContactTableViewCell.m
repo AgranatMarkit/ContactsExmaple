@@ -12,6 +12,7 @@
 
 @property UIActivityIndicatorView *activityIndicator;
 @property UIImageView *contactImageView;
+@property UILabel *shortcutLabel;
 @property UILabel *contactNameLabel;
 
 @end
@@ -38,7 +39,13 @@
     self.contactImageView.clipsToBounds = true;
     [self.contentView addSubview:self.contactImageView];
     
-    // label
+    // shortcut label
+    self.shortcutLabel = [UILabel new];
+    self.shortcutLabel.font = [UIFont systemFontOfSize:30 weight:UIFontWeightHeavy];
+    self.shortcutLabel.textAlignment = NSTextAlignmentCenter;
+    [self.contentView addSubview:self.shortcutLabel];
+    
+    // name label
     self.contactNameLabel = [[UILabel alloc] init];
     self.contactNameLabel.numberOfLines = 0;
     [self.contentView addSubview: self.contactNameLabel];
@@ -61,7 +68,10 @@
     imgFrame.size = CGSizeMake(imgHeight, imgHeight);
     self.contactImageView.frame = imgFrame;
     
-    // label
+    // shortcut label
+    self.shortcutLabel.frame = self.contactImageView.frame;
+    
+    // name label
     UIEdgeInsets lblInsets = UIEdgeInsetsMake(8, 8, 8, 8);
     CGRect lblFrame = CGRectOffset(container.frame,
                                   CGRectGetMaxX(imgFrame) + lblInsets
@@ -78,19 +88,23 @@
 
 // MARK: - Cell API
 
-- (void)transitToLoadingState {
+- (void)transitToLoadingStateWithContact: (Contact *)contact {
+    self.contact = contact;
     [self.contactImageView setHidden: true];
+    [self.shortcutLabel setHidden:true];
     [self.contactNameLabel setHidden: true];
     [self.activityIndicator startAnimating];
 }
 
 - (void)transitToNormalStateWithContact: (Contact *)contact {
-    [self.contactImageView setHidden: false];
-    [self.contactNameLabel setHidden: false];
-    [self.activityIndicator stopAnimating];
     self.contact = contact;
-    [self.contactImageView setImage: self.contact.image];
-    [self.contactNameLabel setText: self.contact.name];
+    [self.contactImageView setHidden: false || contact.image == nil];
+    [self.shortcutLabel setHidden: contact.image != nil];
+    [self.contactNameLabel setHidden: false];
+    [self.shortcutLabel setText: contact.firstTwoChars.uppercaseString];
+    [self.contactImageView setImage: contact.image];
+    [self.contactNameLabel setText: contact.name];
+    [self.activityIndicator stopAnimating];
 }
 
 @end

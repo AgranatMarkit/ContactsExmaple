@@ -17,14 +17,14 @@
 @property NSString *titleString;
 @property CGFloat rowHeight;
 @property ContactsService *contactsService;
-@property NSArray<Contact *> *contacts;
+@property NSMutableArray<Contact *> *contacts;
 
 @end
 
 @implementation ContactsViewController
 
 NSString *const  cellID = @"cellID";
-NSString *const  titleString = @"Contacts";
+NSString *const  titleString = @"Cattacts";
 CGFloat const rowHeight = 100.0;
 
 
@@ -32,7 +32,6 @@ CGFloat const rowHeight = 100.0;
     [super viewDidLoad];
     self.contactsService = [ContactsService new];
     [self setTitle:titleString];
-    
     [self.view setBackgroundColor:UIColor.whiteColor];
     [self.tableView registerClass:[ContactTableViewCell class] forCellReuseIdentifier: cellID];
     [self setupActivityIndicator];
@@ -74,7 +73,7 @@ CGFloat const rowHeight = 100.0;
     __weak ContactsViewController *weakSelf = self;
     [self.contactsService getContacts:^(NSArray<Contact *> *contacts) {
         ContactsViewController *strongSelf = weakSelf;
-        strongSelf.contacts = contacts;
+        strongSelf.contacts = [contacts mutableCopy];
         [strongSelf.tableView reloadData];
         completionHandler();
     }];
@@ -99,11 +98,14 @@ CGFloat const rowHeight = 100.0;
     Contact *contact = self.contacts[indexPath.row];
     
     if (contact.isEmpty) {
-        [cell transitToLoadingState];
+        [cell transitToLoadingStateWithContact: contact];
         __weak ContactsViewController *weakSelf = self;
-        [self.contactsService getInfoFor:self.contacts[indexPath.row] with:^(Contact *contact) {
+        [self.contactsService getInfoFor:contact with:^(Contact *contact) {
             ContactsViewController *strongSelf = weakSelf;
-            [strongSelf updateVisibleCellsIn:tableView using:contact];
+            if (cell.contact.isEmpty) {
+                [cell transitToNormalStateWithContact:contact];
+            }
+            [strongSelf updateContactsWith:contact];
         }];
     } else {
         [cell transitToNormalStateWithContact:contact];
@@ -111,16 +113,12 @@ CGFloat const rowHeight = 100.0;
     return cell;
 }
 
-- (void)updateVisibleCellsIn:(UITableView*)tableView using:(Contact*)contact  {
-    NSArray *visibleCells = tableView.visibleCells;
-    for (ContactTableViewCell *contactCell in visibleCells) {
-        NSInteger row = [[tableView indexPathForCell:contactCell] row];
-        NSInteger indexOfContact = [self.contacts indexOfObjectPassingTest:^BOOL(Contact * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            return [obj.id isEqualToString: contact.id];
-        }];
-        if (row == indexOfContact) {
-            [contactCell transitToNormalStateWithContact:contact];
-        }
+- (void)updateContactsWith:(Contact*)contact  {
+    NSUInteger indexPath = [self.contacts indexOfObjectPassingTest:^BOOL(Contact * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        return [obj.id isEqualToString:contact.id];
+    }];
+    if (indexPath != NSNotFound) {
+        self.contacts[indexPath] = contact;
     }
 }
 
