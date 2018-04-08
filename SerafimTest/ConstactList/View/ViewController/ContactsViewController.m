@@ -36,7 +36,7 @@ CGFloat const rowHeight = 100.0;
     [self.tableView registerClass:[ContactTableViewCell class] forCellReuseIdentifier: cellID];
     [self setupActivityIndicator];
     [self setupRefresh];
-    [self updateDataSource];
+    [self.presenter viewIsReady];
     
 }
 
@@ -53,30 +53,29 @@ CGFloat const rowHeight = 100.0;
 }
 
 - (void)refresh {
-    __weak ContactsViewController *weakSelf = self;
-    [self getContacts:^{
-        ContactsViewController *strongSelf = weakSelf;
-        [strongSelf.refreshControl endRefreshing];
-    }];
+    [self.presenter viewDidRefresh];
 }
 
-- (void) updateDataSource {
-    [self showActivity];
-    __weak ContactsViewController *weakSelf = self;
-    [self getContacts:^{
-        ContactsViewController *strongSelf = weakSelf;
-        [strongSelf hideActvity];
-    }];
+- (void)display:(NSArray<Contact *> *)contacts {
+    self.contacts = [contacts mutableCopy];
+    [self.tableView reloadData];
 }
 
-- (void) getContacts:(void (^)(void))completionHandler {
-    __weak ContactsViewController *weakSelf = self;
-    [self.contactsService getContacts:^(NSArray<Contact *> *contacts) {
-        ContactsViewController *strongSelf = weakSelf;
-        strongSelf.contacts = [contacts mutableCopy];
-        [strongSelf.tableView reloadData];
-        completionHandler();
+- (void)update:(Contact *)contact {
+    // Cell updating
+    for (ContactTableViewCell *cell in self.tableView.visibleCells) {
+        if (cell.contact.isEmpty && [cell.contact.id isEqualToString:contact.id]) {
+            [cell transitToNormalStateWithContact:contact];
+        }
+    }
+    
+    // Contacts updating
+    NSUInteger indexPath = [self.contacts indexOfObjectPassingTest:^BOOL(Contact * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        return [obj.id isEqualToString:contact.id];
     }];
+    if (indexPath != NSNotFound) {
+        self.contacts[indexPath] = contact;
+    }
 }
 
 - (void) showActivity {
@@ -91,6 +90,10 @@ CGFloat const rowHeight = 100.0;
     [self.activityIndicator stopAnimating];
 }
 
+- (void) endRefreshing {
+    [self.refreshControl endRefreshing];
+}
+
 // MARK: - UITableViewDataSource
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -99,27 +102,11 @@ CGFloat const rowHeight = 100.0;
     
     if (contact.isEmpty) {
         [cell transitToLoadingStateWithContact: contact];
-        __weak ContactsViewController *weakSelf = self;
-        [self.contactsService getInfoFor:contact with:^(Contact *contact) {
-            ContactsViewController *strongSelf = weakSelf;
-            if (cell.contact.isEmpty) {
-                [cell transitToNormalStateWithContact:contact];
-            }
-            [strongSelf updateContactsWith:contact];
-        }];
+        [self.presenter viewWillShow:contact];
     } else {
         [cell transitToNormalStateWithContact:contact];
     }
     return cell;
-}
-
-- (void)updateContactsWith:(Contact*)contact  {
-    NSUInteger indexPath = [self.contacts indexOfObjectPassingTest:^BOOL(Contact * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        return [obj.id isEqualToString:contact.id];
-    }];
-    if (indexPath != NSNotFound) {
-        self.contacts[indexPath] = contact;
-    }
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

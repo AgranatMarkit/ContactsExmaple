@@ -12,6 +12,8 @@
 		4D362B90207730740047792E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D362B8A207730740047792E /* Assets.xcassets */; };
 		4D362B91207730740047792E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D362B8B207730740047792E /* main.m */; };
 		4D362B92207730740047792E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D362B8C207730740047792E /* AppDelegate.m */; };
+		4DD7B1B02079FA6300D2A083 /* ContactsPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD7B1AF2079FA6300D2A083 /* ContactsPresenter.m */; };
+		4DD7B1B7207A00E500D2A083 /* ContactsModuleAssembler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD7B1B6207A00E500D2A083 /* ContactsModuleAssembler.m */; };
 		4DF525112078B3C100E12CD6 /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF525102078B3C100E12CD6 /* ContactTableViewCell.m */; };
 		4DF525152078DA6100E12CD6 /* ContactsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF525142078DA6100E12CD6 /* ContactsService.m */; };
 		4DF525192078DA7500E12CD6 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF525182078DA7500E12CD6 /* Contact.m */; };
@@ -27,6 +29,11 @@
 		4D362B8B207730740047792E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4D362B8C207730740047792E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4D362B8D207730740047792E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DD7B1AE2079FA6300D2A083 /* ContactsPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsPresenter.h; sourceTree = "<group>"; };
+		4DD7B1AF2079FA6300D2A083 /* ContactsPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsPresenter.m; sourceTree = "<group>"; };
+		4DD7B1B12079FF7100D2A083 /* ContactsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsView.h; sourceTree = "<group>"; };
+		4DD7B1B5207A00E500D2A083 /* ContactsModuleAssembler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsModuleAssembler.h; sourceTree = "<group>"; };
+		4DD7B1B6207A00E500D2A083 /* ContactsModuleAssembler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsModuleAssembler.m; sourceTree = "<group>"; };
 		4DF5250F2078B3C100E12CD6 /* ContactTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactTableViewCell.h; sourceTree = "<group>"; };
 		4DF525102078B3C100E12CD6 /* ContactTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewCell.m; sourceTree = "<group>"; };
 		4DF525132078DA6100E12CD6 /* ContactsService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsService.h; sourceTree = "<group>"; };
@@ -75,13 +82,14 @@
 			path = SerafimTest;
 			sourceTree = "<group>";
 		};
-		4D362B85207730740047792E /* ViewControllers */ = {
+		4D362B85207730740047792E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4D362B86207730740047792E /* ContactsViewController.m */,
-				4D362B87207730740047792E /* ContactsViewController.h */,
+				4DD7B1B8207A041600D2A083 /* ViewController */,
+				4DF5250E2078B3A500E12CD6 /* Cells */,
+				4DD7B1B12079FF7100D2A083 /* ContactsView.h */,
 			);
-			path = ViewControllers;
+			path = View;
 			sourceTree = "<group>";
 		};
 		4D362B88207730740047792E /* Application */ = {
@@ -95,11 +103,39 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		4DD7B1AD2079FA5300D2A083 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				4DD7B1AE2079FA6300D2A083 /* ContactsPresenter.h */,
+				4DD7B1AF2079FA6300D2A083 /* ContactsPresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4DD7B1B4207A00D500D2A083 /* Assembler */ = {
+			isa = PBXGroup;
+			children = (
+				4DD7B1B5207A00E500D2A083 /* ContactsModuleAssembler.h */,
+				4DD7B1B6207A00E500D2A083 /* ContactsModuleAssembler.m */,
+			);
+			path = Assembler;
+			sourceTree = "<group>";
+		};
+		4DD7B1B8207A041600D2A083 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4D362B86207730740047792E /* ContactsViewController.m */,
+				4D362B87207730740047792E /* ContactsViewController.h */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		4DF5250D2078B35B00E12CD6 /* ConstactList */ = {
 			isa = PBXGroup;
 			children = (
-				4DF5250E2078B3A500E12CD6 /* Cells */,
-				4D362B85207730740047792E /* ViewControllers */,
+				4DD7B1B4207A00D500D2A083 /* Assembler */,
+				4DD7B1AD2079FA5300D2A083 /* Presenter */,
+				4D362B85207730740047792E /* View */,
 			);
 			path = ConstactList;
 			sourceTree = "<group>";
@@ -201,8 +237,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DD7B1B02079FA6300D2A083 /* ContactsPresenter.m in Sources */,
 				4DF525112078B3C100E12CD6 /* ContactTableViewCell.m in Sources */,
 				4D362B91207730740047792E /* main.m in Sources */,
+				4DD7B1B7207A00E500D2A083 /* ContactsModuleAssembler.m in Sources */,
 				4D362B92207730740047792E /* AppDelegate.m in Sources */,
 				4D362B8F207730740047792E /* ContactsViewController.m in Sources */,
 				4DF525192078DA7500E12CD6 /* Contact.m in Sources */,

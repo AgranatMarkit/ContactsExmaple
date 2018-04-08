@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "ContactsViewController.h"
+#import "ContactsModuleAssembler.h"
 
 @interface AppDelegate ()
 
@@ -23,7 +23,7 @@
 
 - (void)setupViewController {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    ContactsViewController *contactsVC = [ContactsViewController new];
+    ContactsViewController *contactsVC = [ContactsModuleAssembler assemble];
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:contactsVC];
     [nc.view setBackgroundColor:UIColor.whiteColor];
     self.window.rootViewController = nc;
